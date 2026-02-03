@@ -1,11 +1,12 @@
 extends CharacterBody2D
+class_name PlayerController
 
 @export var speed = 15
 @export var jump = 10
 
 var speed_multiplier = 25
 var jump_multiplier = -25
-#var direction = 0
+var direction = 0
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
