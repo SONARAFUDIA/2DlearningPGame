@@ -64,6 +64,8 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=1406849423]
 script = ExtResource("1_7dd06")
+speed = 10
+jump = null
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=561279072]
 zoom = Vector2(3, 3)

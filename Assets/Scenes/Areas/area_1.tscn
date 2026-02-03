@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dv6iwt87a1geh" path="res://Assets/Sprites/level_tileset.png" id="1_uidp5"]
 [ext_resource type="PackedScene" uid="uid://n8c2tpaxwrfk" path="res://Assets/Scenes/player.tscn" id="2_3uyhe"]
+[ext_resource type="PackedScene" uid="uid://du5dyh6wyannv" path="res://Assets/Scenes/movs_platform.tscn" id="3_8wi1m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3uyhe"]
 texture = ExtResource("1_uidp5")
@@ -16,16 +17,16 @@ texture = ExtResource("1_uidp5")
 8:0/0 = 0
 8:0/0/terrain_set = 0
 8:0/0/terrain = 0
-8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 8, -8, 8, -4, -4, -4)
-8:0/0/physics_layer_0/polygon_0/one_way = true
+8:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, -4, -4, -4)
+8:0/0/physics_layer_1/polygon_0/one_way = true
 8:0/0/terrains_peering_bit/right_side = 0
 8:0/0/terrains_peering_bit/bottom_right_corner = 0
 8:0/0/terrains_peering_bit/bottom_side = 0
 9:0/0 = 0
 9:0/0/terrain_set = 0
 9:0/0/terrain = 0
-9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4, -8, 4, -4, -8, -4)
-9:0/0/physics_layer_0/polygon_0/one_way = true
+9:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 0, -8, 4, -4, -8, -4)
+9:0/0/physics_layer_1/polygon_0/one_way = true
 9:0/0/terrains_peering_bit/bottom_side = 0
 9:0/0/terrains_peering_bit/bottom_left_corner = 0
 9:0/0/terrains_peering_bit/left_side = 0
@@ -407,13 +408,21 @@ texture = ExtResource("1_uidp5")
 17:17/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_8wi1m"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 256
+physics_layer_1/collision_layer = 512
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "one_way"
 terrain_set_0/terrain_0/color = Color(0.76862746, 0.28235295, 0.03529412, 1)
 terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.14349744, 0.5010638, 0.5123985, 1)
 sources/0 = SubResource("TileSetAtlasSource_3uyhe")
+
+[sub_resource type="Curve2D" id="Curve2D_ql8qi"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 138, 0)
+}
+point_count = 2
 
 [node name="Area1" type="Node2D" unique_id=1478545646]
 
@@ -423,4 +432,9 @@ tile_set = SubResource("TileSet_8wi1m")
 
 [node name="Player" parent="." unique_id=1406849423 instance=ExtResource("2_3uyhe")]
 position = Vector2(0, -1)
+collision_mask = 768
 speed = 2
+
+[node name="MovsPlatform" parent="." unique_id=1425740978 instance=ExtResource("3_8wi1m")]
+position = Vector2(184, -58)
+curve = SubResource("Curve2D_ql8qi")
